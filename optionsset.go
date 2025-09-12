@@ -9,5 +9,5 @@ import "github.com/spf13/cobra"
 // to implement to make them reusable.
 type OptionsSet interface {
 	AddFlags(*cobra.Command)
-	Verify() error
+	Validate() error
 }
