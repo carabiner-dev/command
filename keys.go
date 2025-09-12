@@ -27,7 +27,7 @@ func (ko *KeyOptions) AddFlags(cmd *cobra.Command) {
 }
 
 // Verify checks the options. Key files are verified to check if they exist
-func (ko *KeyOptions) Verify() error {
+func (ko *KeyOptions) Validate() error {
 	errs := []error{}
 	for _, p := range ko.PublicKeyPaths {
 		if _, err := os.Stat(p); err != nil {
