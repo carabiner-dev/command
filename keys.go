@@ -15,14 +15,30 @@ import (
 var _ OptionsSet = &KeyOptions{}
 
 type KeyOptions struct {
+	config         *OptionsSetConfig
 	PublicKeyPaths []string
+}
+
+func (ko *KeyOptions) Config() *OptionsSetConfig {
+	if ko.config == nil {
+		ko.config = &OptionsSetConfig{
+			Flags: map[string]FlagConfig{
+				"output": {
+					Short: "k",
+					Long:  "key",
+					Help:  "path to public key files",
+				},
+			},
+		}
+	}
+	return ko.config
 }
 
 // AddFlags adds the options flags to a command
 func (ko *KeyOptions) AddFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().StringSliceVarP(
-		&ko.PublicKeyPaths, "key", "k", []string{}, // this should be a public constant
-		"path to public key files",
+		&ko.PublicKeyPaths,
+		ko.Config().LongFlag("key"), ko.Config().ShortFlag("key"), []string{}, ko.Config().HelpText("key"),
 	)
 }
 
