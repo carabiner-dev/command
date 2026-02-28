@@ -8,13 +8,23 @@ import (
 	"log/slog"
 	"slices"
 
-	"github.com/carabiner-dev/command"
 	"github.com/chainguard-dev/clog"
 	slogzap "github.com/samber/slog-zap/v2"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+
+	"github.com/carabiner-dev/command"
 )
+
+const (
+	LevelDebug = "debug"
+	LevelInfo  = "info"
+	LevelWarn  = "warn"
+	LevelError = "error"
+)
+
+var Levels = []string{LevelDebug, LevelInfo, LevelWarn, LevelError}
 
 var _ command.OptionsSet = &Options{}
 
@@ -32,7 +42,7 @@ func (lo *Options) Config() *command.OptionsSetConfig {
 				"log-level": {
 					Short: "",
 					Long:  "log-level",
-					Help:  "Log level (debug, info, warn, error)",
+					Help:  fmt.Sprintf("Log level %+v", Levels),
 				},
 			},
 		}
@@ -43,22 +53,18 @@ func (lo *Options) Config() *command.OptionsSetConfig {
 // AddFlags adds the logging flags to a command.
 func (lo *Options) AddFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().StringVar(
-		&lo.LogLevel,
-		lo.Config().LongFlag("log-level"),
-		"warn",
-		lo.Config().HelpText("log-level"),
+		&lo.LogLevel, lo.Config().LongFlag("log-level"), LevelWarn, lo.Config().HelpText("log-level"),
 	)
 }
 
 // Validate checks that the log level is valid.
 func (lo *Options) Validate() error {
 	if lo.LogLevel == "" {
-		lo.LogLevel = "warn"
+		lo.LogLevel = LevelWarn
 		return nil
 	}
 
-	validLevels := []string{"debug", "info", "warn", "error"}
-	if !slices.Contains(validLevels, lo.LogLevel) {
+	if !slices.Contains(Levels, lo.LogLevel) {
 		return fmt.Errorf("invalid log level %q (must be one of: debug, info, warn, error)", lo.LogLevel)
 	}
 	return nil
@@ -70,23 +76,23 @@ func (lo *Options) InitLogger() (*clog.Logger, error) {
 	// Default to warn if not set
 	level := lo.LogLevel
 	if level == "" {
-		level = "warn"
+		level = LevelWarn
 	}
 
 	// Map log level to both slog and zap levels
 	var slogLevel slog.Level
 	var zapLevel zap.AtomicLevel
 	switch level {
-	case "debug":
+	case LevelDebug:
 		slogLevel = slog.LevelDebug
 		zapLevel = zap.NewAtomicLevelAt(zap.DebugLevel)
-	case "info":
+	case LevelInfo:
 		slogLevel = slog.LevelInfo
 		zapLevel = zap.NewAtomicLevelAt(zap.InfoLevel)
-	case "warn":
+	case LevelWarn:
 		slogLevel = slog.LevelWarn
 		zapLevel = zap.NewAtomicLevelAt(zap.WarnLevel)
-	case "error":
+	case LevelError:
 		slogLevel = slog.LevelError
 		zapLevel = zap.NewAtomicLevelAt(zap.ErrorLevel)
 	default:
