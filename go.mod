@@ -1,6 +1,6 @@
 module github.com/carabiner-dev/command
 
-go 1.24.8
+go 1.25.7
 
 require (
 	github.com/carabiner-dev/signer v0.3.2
