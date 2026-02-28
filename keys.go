@@ -14,16 +14,22 @@ import (
 
 var _ OptionsSet = &KeyOptions{}
 
+// KeyOptions provides key file configuration for Carabiner applications.
+//
+// Deprecated: Use github.com/carabiner-dev/command/keys.Options instead.
 type KeyOptions struct {
 	config         *OptionsSetConfig
 	PublicKeyPaths []string
 }
 
+// Config returns the flag configuration for key options.
+//
+// Deprecated: Use github.com/carabiner-dev/command/keys.Options instead.
 func (ko *KeyOptions) Config() *OptionsSetConfig {
 	if ko.config == nil {
 		ko.config = &OptionsSetConfig{
 			Flags: map[string]FlagConfig{
-				"output": {
+				"key": {
 					Short: "k",
 					Long:  "key",
 					Help:  "path to public key files",
@@ -34,7 +40,9 @@ func (ko *KeyOptions) Config() *OptionsSetConfig {
 	return ko.config
 }
 
-// AddFlags adds the options flags to a command
+// AddFlags adds the options flags to a command.
+//
+// Deprecated: Use github.com/carabiner-dev/command/keys.Options instead.
 func (ko *KeyOptions) AddFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().StringSliceVarP(
 		&ko.PublicKeyPaths,
@@ -42,7 +50,9 @@ func (ko *KeyOptions) AddFlags(cmd *cobra.Command) {
 	)
 }
 
-// Verify checks the options. Key files are verified to check if they exist
+// Validate checks the options. Key files are verified to check if they exist.
+//
+// Deprecated: Use github.com/carabiner-dev/command/keys.Options instead.
 func (ko *KeyOptions) Validate() error {
 	errs := []error{}
 	for _, p := range ko.PublicKeyPaths {
@@ -55,8 +65,9 @@ func (ko *KeyOptions) Validate() error {
 	return errors.Join(errs...)
 }
 
-// ParseKeys parses the key files and returns a slice of public key
-// providers.
+// ParseKeys parses the key files and returns a slice of public key providers.
+//
+// Deprecated: Use github.com/carabiner-dev/command/keys.Options instead.
 func (ko *KeyOptions) ParseKeys() ([]key.PublicKeyProvider, error) {
 	parser := key.NewParser()
 	r := []key.PublicKeyProvider{}
