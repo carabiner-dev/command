@@ -13,11 +13,17 @@ import (
 
 var _ OptionsSet = &OutputFile{}
 
+// OutputFile provides output file configuration for Carabiner applications.
+//
+// Deprecated: Use github.com/carabiner-dev/command/output.Options instead.
 type OutputFile struct {
 	config     *OptionsSetConfig
 	OutputPath string
 }
 
+// Config returns the flag configuration for output options.
+//
+// Deprecated: Use github.com/carabiner-dev/command/output.Options instead.
 func (oo *OutputFile) Config() *OptionsSetConfig {
 	if oo.config == nil {
 		oo.config = &OptionsSetConfig{
@@ -33,7 +39,9 @@ func (oo *OutputFile) Config() *OptionsSetConfig {
 	return oo.config
 }
 
-// AddFlags adds the options flags to a command
+// AddFlags adds the options flags to a command.
+//
+// Deprecated: Use github.com/carabiner-dev/command/output.Options instead.
 func (oo *OutputFile) AddFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().StringVarP(
 		&oo.OutputPath, oo.config.LongFlag("output"),
@@ -42,10 +50,16 @@ func (oo *OutputFile) AddFlags(cmd *cobra.Command) {
 	)
 }
 
+// Validate checks the output options.
+//
+// Deprecated: Use github.com/carabiner-dev/command/output.Options instead.
 func (oo *OutputFile) Validate() error {
 	return nil
 }
 
+// GetWriter returns a writer for the output.
+//
+// Deprecated: Use github.com/carabiner-dev/command/output.Options instead.
 func (oo *OutputFile) GetWriter() (io.Writer, error) {
 	if oo.OutputPath == "" {
 		return os.Stdout, nil
