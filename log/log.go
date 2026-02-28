@@ -4,6 +4,7 @@
 package log
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"slices"
@@ -120,4 +121,14 @@ func (lo *Options) InitLogger() (*clog.Logger, error) {
 	return clog.New(
 		slogzap.Option{Level: slogLevel, Logger: zapLogger}.NewZapHandler(),
 	), nil
+}
+
+// WithLogger initializes the logger and returns a context with the logger configured.
+// This is a convenience method that combines InitLogger() and clog.WithLogger().
+func (lo *Options) WithLogger(ctx context.Context) (context.Context, error) {
+	logger, err := lo.InitLogger()
+	if err != nil {
+		return ctx, fmt.Errorf("initializing logger: %w", err)
+	}
+	return clog.WithLogger(ctx, logger), nil
 }
