@@ -62,6 +62,35 @@ verifyCmd := &cobra.Command{
 keyOpts.AddFlags(verifyCmd)
 ```
 
+### `output` - Output File Management
+
+Package: `github.com/carabiner-dev/command/output`
+
+Provides output file path configuration with `--output/-o` flag. Returns an `io.Writer` that writes to the specified file or defaults to STDOUT.
+
+**Usage:**
+
+```go
+import "github.com/carabiner-dev/command/output"
+
+outOpts := &output.Options{}
+
+exportCmd := &cobra.Command{
+    Use: "export",
+    RunE: func(cmd *cobra.Command, args []string) error {
+        writer, err := outOpts.GetWriter()
+        if err != nil {
+            return err
+        }
+        // Write output to file or STDOUT...
+        fmt.Fprintln(writer, "data")
+        return nil
+    },
+}
+
+outOpts.AddFlags(exportCmd)
+```
+
 ## Contributing
 
 This goal of this package is to to keep reusable sets of flags that have
