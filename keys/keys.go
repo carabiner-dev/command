@@ -71,7 +71,7 @@ func (ko *Options) ParseKeys() ([]key.PublicKeyProvider, error) {
 		if err != nil {
 			return nil, fmt.Errorf("reading key file: %w", err)
 		}
-		k, err := parser.ParsePublicKey(data)
+		k, err := parser.ParsePublicKeyProvider(data)
 		if err != nil {
 			return nil, fmt.Errorf("parsing key %q: %w", path, err)
 		}
