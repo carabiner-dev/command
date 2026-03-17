@@ -20,6 +20,7 @@ var _ command.OptionsSet = &Options{}
 type Options struct {
 	config         *command.OptionsSetConfig
 	PublicKeyPaths []string
+	extraKeys      []key.PublicKeyProvider
 }
 
 // Config returns the flag configuration for key options.
@@ -62,10 +63,17 @@ func (ko *Options) Validate() error {
 	return errors.Join(errs...)
 }
 
+// AddKeys appends pre-parsed key providers. These are included in the
+// result of ParseKeys alongside any keys parsed from file paths.
+func (ko *Options) AddKeys(providers ...key.PublicKeyProvider) {
+	ko.extraKeys = append(ko.extraKeys, providers...)
+}
+
 // ParseKeys parses the key files and returns a slice of public key providers.
+// Any keys previously added via AddKeys are included in the result.
 func (ko *Options) ParseKeys() ([]key.PublicKeyProvider, error) {
 	parser := key.NewParser()
-	r := []key.PublicKeyProvider{}
+	r := append([]key.PublicKeyProvider{}, ko.extraKeys...)
 	for _, path := range ko.PublicKeyPaths {
 		data, err := os.ReadFile(path)
 		if err != nil {
