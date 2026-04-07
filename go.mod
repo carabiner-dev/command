@@ -3,7 +3,7 @@ module github.com/carabiner-dev/command
 go 1.25.8
 
 require (
-	github.com/carabiner-dev/signer v0.4.2-0.20260317092902-42e595fd41c1
+	github.com/carabiner-dev/signer v0.4.2
 	github.com/chainguard-dev/clog v1.8.0
 	github.com/samber/slog-zap/v2 v2.6.4
 	github.com/spf13/cobra v1.10.2
