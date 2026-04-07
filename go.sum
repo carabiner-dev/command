@@ -1,7 +1,7 @@
 github.com/ProtonMail/go-crypto v1.4.0 h1:Zq/pbM3F5DFgJiMouxEdSVY44MVoQNEKp5d5QxIQceQ=
 github.com/ProtonMail/go-crypto v1.4.0/go.mod h1:e1OaTyu5SYVrO9gKOEhTc+5UcXtTUa+P3uLudwcgPqo=
-github.com/carabiner-dev/signer v0.4.2-0.20260317092902-42e595fd41c1 h1:TbJ567LC77uQs+Relza7aaWhzfV71gpffHo7CuYVVbQ=
-github.com/carabiner-dev/signer v0.4.2-0.20260317092902-42e595fd41c1/go.mod h1:BTWxBXeVfqx23jLIQ72DIYAg105FjSwK11aAco5+ixo=
+github.com/carabiner-dev/signer v0.4.2 h1:VcrffuY8iHkKVcA91lyhOAg39u0V0fAdtQjSBYBrmcg=
+github.com/carabiner-dev/signer v0.4.2/go.mod h1:BTWxBXeVfqx23jLIQ72DIYAg105FjSwK11aAco5+ixo=
 github.com/chainguard-dev/clog v1.8.0 h1:frlTMEdg3XQR+ioQ6O9i92uigY8GTUcWKpuCFkhcCHA=
 github.com/chainguard-dev/clog v1.8.0/go.mod h1:5MQOZi+Iu7fV7GcJG8ag8rCB5elEOpqRMKEASgnGVdo=
 github.com/cloudflare/circl v1.6.2 h1:hL7VBpHHKzrV5WTfHCaBsgx/HGbBYlgrwvNXEVDYYsQ=
