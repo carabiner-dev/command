@@ -1,9 +1,9 @@
 module github.com/carabiner-dev/command
 
-go 1.25.8
+go 1.25.9
 
 require (
-	github.com/carabiner-dev/signer v0.4.3
+	github.com/carabiner-dev/signer v0.4.5
 	github.com/chainguard-dev/clog v1.8.0
 	github.com/samber/slog-zap/v2 v2.6.4
 	github.com/spf13/cobra v1.10.2
@@ -19,6 +19,6 @@ require (
 	github.com/spf13/pflag v1.0.10 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.49.0 // indirect
-	golang.org/x/sys v0.42.0 // indirect
+	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/text v0.35.0 // indirect
 )
