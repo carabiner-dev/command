@@ -9,27 +9,28 @@ import (
 
 func TestLongFlag(t *testing.T) {
 	t.Parallel()
+	const flagName = "myflag"
 	for _, tt := range []struct {
 		name   string
 		expect string
 		conf   *OptionsSetConfig
 	}{
-		{"normal", "myflag", &OptionsSetConfig{
+		{"normal", flagName, &OptionsSetConfig{
 			FlagPrefix: "",
 			Flags: map[string]FlagConfig{
-				"myflag": {Long: "myflag"},
+				flagName: {Long: flagName},
 			},
 		}},
 		{"normal", "test-myflag", &OptionsSetConfig{
 			FlagPrefix: "test",
 			Flags: map[string]FlagConfig{
-				"myflag": {Long: "myflag"},
+				flagName: {Long: flagName},
 			},
 		}},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			if tt.expect != tt.conf.LongFlag("myflag") {
+			if tt.expect != tt.conf.LongFlag(flagName) {
 				t.Fail()
 			}
 		})
