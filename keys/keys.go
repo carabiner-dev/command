@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/carabiner-dev/signer/key"
+	"github.com/policylabs/signer/key"
 	"github.com/spf13/cobra"
 
 	"github.com/carabiner-dev/command"
