@@ -10,6 +10,7 @@ package subject
 import (
 	"errors"
 	"fmt"
+	"maps"
 	"os"
 
 	"github.com/carabiner-dev/hasher"
@@ -127,9 +128,7 @@ func (so *Options) HashSets() (hasher.FileHashSet, error) {
 	if err != nil {
 		return nil, fmt.Errorf("hashing subject files: %w", err)
 	}
-	for path, hs := range *hashed {
-		ret[path] = hs
-	}
+	maps.Copy(ret, *hashed)
 	return ret, nil
 }
 
