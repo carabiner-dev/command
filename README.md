@@ -91,6 +91,47 @@ exportCmd := &cobra.Command{
 outOpts.AddFlags(exportCmd)
 ```
 
+### `subject` - Attestation Subjects
+
+Package: `github.com/carabiner-dev/command/subject`
+
+Provides the `--subject/-s` flag to read attestation subjects from the command
+line. Each value is either a digest in `algorithm:value` form or the path to a
+file, which gets hashed. Every algorithm name from the
+[in-toto DigestSet spec](https://github.com/in-toto/attestation/blob/main/spec/v1/digest_set.md)
+is accepted (`sha256`, `sha1`, `sha512`, `sha3_256`, `gitCommit`, `gitTree`,
+`gitBlob`, `gitTag`, `dirHash`, ...), matched case-insensitively and normalized
+to the canonical spelling. Strings shaped like a digest are never looked up as
+files, so a malformed digest is reported instead of being mistaken for a path.
+
+`subject.ParseDigest` can also be used on its own to parse a single
+`algorithm:value` string.
+
+**Usage:**
+
+```go
+import "github.com/carabiner-dev/command/subject"
+
+subjectOpts := &subject.Options{}
+
+attestCmd := &cobra.Command{
+    Use: "attest",
+    PreRunE: func(cmd *cobra.Command, args []string) error {
+        return subjectOpts.Validate()
+    },
+    RunE: func(cmd *cobra.Command, args []string) error {
+        descriptors, err := subjectOpts.ResourceDescriptors()
+        if err != nil {
+            return err
+        }
+        // Use the in-toto resource descriptors as subjects...
+        return nil
+    },
+}
+
+subjectOpts.AddFlags(attestCmd)
+```
+
 ## Contributing
 
 This goal of this package is to to keep reusable sets of flags that have

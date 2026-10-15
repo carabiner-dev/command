@@ -3,7 +3,9 @@ module github.com/carabiner-dev/command
 go 1.26.0
 
 require (
+	github.com/carabiner-dev/hasher v0.2.4
 	github.com/chainguard-dev/clog v1.8.1
+	github.com/in-toto/attestation v1.2.0
 	github.com/policylabs/signer v0.6.3
 	github.com/samber/slog-zap/v2 v2.7.0
 	github.com/spf13/cobra v1.10.2
@@ -14,6 +16,7 @@ require (
 	github.com/ProtonMail/go-crypto v1.5.2 // indirect
 	github.com/cloudflare/circl v1.6.5 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/nozzle/throttler v0.0.0-20180817012639-2ea982251481 // indirect
 	github.com/samber/lo v1.53.0 // indirect
 	github.com/samber/slog-common v0.21.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
@@ -21,4 +24,5 @@ require (
 	golang.org/x/crypto v0.57.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/text v0.42.0 // indirect
+	google.golang.org/protobuf v1.36.12 // indirect
 )
