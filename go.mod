@@ -6,7 +6,7 @@ require (
 	github.com/carabiner-dev/hasher v0.2.4
 	github.com/chainguard-dev/clog v1.8.1
 	github.com/in-toto/attestation v1.2.0
-	github.com/policylabs/signer v0.6.3
+	github.com/policylabs/signer v0.6.4
 	github.com/samber/slog-zap/v2 v2.7.0
 	github.com/spf13/cobra v1.10.2
 	go.uber.org/zap v1.28.0

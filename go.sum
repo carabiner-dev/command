@@ -15,8 +15,8 @@ github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/nozzle/throttler v0.0.0-20180817012639-2ea982251481 h1:Up6+btDp321ZG5/zdSLo48H9Iaq0UQGthrhWC6pCxzE=
 github.com/nozzle/throttler v0.0.0-20180817012639-2ea982251481/go.mod h1:yKZQO8QE2bHlgozqWDiRVqTFlLQSj30K/6SAK8EeYFw=
-github.com/policylabs/signer v0.6.3 h1:TjwTKEtI+ZlIeSHRx+gUAcn/EGdByBjLjb1JVttKL0E=
-github.com/policylabs/signer v0.6.3/go.mod h1:ApviXSuYhSrLqLzpw47St7c8kUOPSkq1NiYNBAp2MDI=
+github.com/policylabs/signer v0.6.4 h1:5dBt/X+MVbg1Is+IeH9rmTEV9R4J9c4/Egawe9Q61Bc=
+github.com/policylabs/signer v0.6.4/go.mod h1:oPcQlEW6uaiLCWTiwZLxF+KdQuSRhx3h6xVVEcTlFNE=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/samber/lo v1.53.0 h1:t975lj2py4kJPQ6haz1QMgtId2gtmfktACxIXArw3HM=
 github.com/samber/lo v1.53.0/go.mod h1:4+MXEGsJzbKGaUEQFKBq2xtfuznW9oz/WrgyzMzRoM0=
