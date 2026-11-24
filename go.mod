@@ -6,7 +6,7 @@ require (
 	github.com/carabiner-dev/hasher v0.2.4
 	github.com/chainguard-dev/clog v1.8.1
 	github.com/in-toto/attestation v1.2.0
-	github.com/policylabs/signer v0.6.7
+	github.com/policylabs/signer v0.6.8
 	github.com/samber/slog-zap/v2 v2.7.0
 	github.com/spf13/cobra v1.10.2
 	go.uber.org/zap v1.28.0
@@ -22,7 +22,7 @@ require (
 	github.com/spf13/pflag v1.0.10 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.58.0 // indirect
-	golang.org/x/sys v0.49.0 // indirect
+	golang.org/x/sys v0.50.0 // indirect
 	golang.org/x/text v0.43.0 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 )
